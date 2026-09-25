@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С Днём Рождения ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Comfortaa:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marck+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&family=Great+Vibes&family=Amatic+SC:wght@400;700&family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  :root {
+    --col-opacity: 0.75;
+    --col-speed-min: 260;
+    --col-speed-max: 320;
+    --col-gap: 9;
+    --col-font: 1.7rem;
+    --col-font-mobile: 1.25rem;
+    --col-color: #cccceb;
+    --col-glow1: #8a2be2;
+    --col-glow2: #4b0082;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Georgia', serif; }
+  body {
+    background: linear-gradient(135deg, #0a0014, #1e3a8a, #6b21a8, #0a0014);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+    color:#fff; overflow-x:hidden; min-height:100vh;
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .screen {
+    display:none; min-height:100vh; padding:40px 20px;
+    flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; position:relative; z-index:1;
+  }
+  .screen.active { display:flex; animation: fadeIn 0.8s ease; }
+  @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+
+  h1 { font-size:2.5rem; margin-bottom:20px; text-shadow:0 0 20px #b88dff; }
+  h2 { font-size:1.8rem; margin-bottom:20px; }
+  p { font-size:1.2rem; line-height:1.6; margin-bottom:15px; max-width:600px; }
+
+  button {
+    background: linear-gradient(135deg, #1e3a8a, #6b21a8);
+    color:#fff; border:none; padding:15px 40px; font-size:1.1rem;
+    border-radius:50px; cursor:pointer; margin:10px;
+    box-shadow:0 0 20px rgba(184,141,255,0.6); transition:0.3s;
+    font-family:inherit;
+  }
+  button:hover { transform:scale(1.05); box-shadow:0 0 35px rgba(184,141,255,0.9); }
+
+  .back-btn {
+    position: fixed;
+    top: 20px; left: 20px;
+    z-index: 100;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(184,141,255,0.5);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(184,141,255,0.4);
+    transition: 0.3s;
+    display: none;
+    font-family: inherit;
+    margin: 0;
+  }
+  .back-btn:hover {
+    background: rgba(184,141,255,0.3);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(184,141,255,0.8);
+  }
+  .back-btn.visible { display: block; }
+
+  input {
+    padding:15px; font-size:1.2rem; border-radius:10px; border:2px solid #b88dff;
+    background:rgba(255,255,255,0.1); color:#fff; text-align:center; margin:10px;
+  }
+  input::placeholder { color:rgba(255,255,255,0.5); }
+
+  .compliment-columns {
+    position: fixed; inset: 0; pointer-events: none;
+    z-index: 0; overflow: hidden;
+    opacity: var(--col-opacity);
+  }
+  .compliment-col {
+    position: absolute; top: -100%;
+    display: flex; flex-direction: column;
+    gap: calc(var(--col-gap) * 1px);
+    font-size: var(--col-font);
+    font-weight: bold; white-space: nowrap;
+    animation: scrollDown linear infinite;
+    color: var(--col-color);
+    text-shadow: 0 0 12px var(--col-glow1), 0 0 24px var(--col-glow2);
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+  .compliment-col span { display: block; opacity: 0.95; }
+  @keyframes scrollDown {
+    from { transform: translateY(-50%); }
+    to   { transform: translateY(50vh); }
+  }
+
+  .heart-bg {
+    position: fixed;
+    top: -50px;
+    pointer-events: none;
+    z-index: 0;
+    animation: fall linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  @media (max-width: 600px) {
+    .compliment-columns { opacity: calc(var(--col-opacity) * 0.8); }
+    .compliment-col {
+      font-size: var(--col-font-mobile);
+      gap: calc(var(--col-gap) * 0.8px);
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .cake { font-size:8rem; margin:20px; position:relative; }
+  .flame { font-size:3rem; transition:0.3s; cursor:pointer; }
+  .flame.out { opacity:0.2; filter:grayscale(1); }
+
+  .riddle-box {
+    background:rgba(255,255,255,0.1); padding:30px; border-radius:20px;
+    border:2px solid rgba(184,141,255,0.5); max-width:500px;
+  }
+  .wrong { color:#ff6b6b; margin-top:10px; }
+  .correct { color:#6bff9e; margin-top:10px; }
+
+  .heart-grid {
+    display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; margin:20px;
+    max-width:500px;
+  }
+  .cell {
+    aspect-ratio:1; background:rgba(255,255,255,0.1); border-radius:10px;
+    display:flex; align-items:center; justify-content:center; font-size:2rem;
+    cursor:pointer; transition:0.2s;
+  }
+  .cell:hover { background:rgba(255,255,255,0.2); }
+
+  .puzzle {
+    display:grid; gap:4px;
+    margin:20px; padding:8px; background:rgba(255,255,255,0.1); border-radius:15px;
+  }
+  .tile {
+    cursor:pointer; border-radius:8px;
+    border:2px solid rgba(184,141,255,0.3); transition:0.2s;
+    background-image: url('pops.jpg');
+    background-repeat: no-repeat;
+  }
+  .tile.selected { border-color:#b88dff; box-shadow:0 0 15px #b88dff; }
+
+  .player {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(184,141,255,0.5);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    margin: 20px auto;
+    backdrop-filter: blur(10px);
+  }
+  .album-cover {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-image: url('gosti.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: spin 20s linear infinite;
+    box-shadow: 0 0 30px rgba(184,141,255,0.6),
+                0 0 60px rgba(184,141,255,0.3);
+    border: 4px solid rgba(184,141,255,0.4);
+    position: relative;
+  }
+  .album-cover::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px; height: 30px;
+    background: #1a0a3d;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.3);
+  }
+  @media (max-width: 500px) {
+    .album-cover { width: 170px; height: 170px; }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  #songTitle { font-size: 1.4rem; margin-bottom: 5px; }
+  #songArtist { color: #b88dff; font-size: 1rem; margin-bottom: 20px; }
+  .progress-bar {
+    width: 100%; height: 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px; cursor: pointer;
+    margin: 15px 0; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #b88dff, #ff69b4);
+    width: 0%; transition: width 0.1s;
+  }
+  .time {
+    display: flex; justify-content: space-between;
+    font-size: 0.9rem; color: #b88dff;
+  }
+
+  .reasons-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(80px,1fr));
+    gap:10px; max-width:700px; margin:20px; width:100%;
+  }
+  .reason-card {
+    aspect-ratio:1; background: linear-gradient(135deg, #1e3a8a, #6b21a8);
+    border-radius:12px; cursor:pointer; display:flex;
+    align-items:center; justify-content:center; font-size:1.5rem;
+    transition:0.3s; position:relative; padding:5px;
+  }
+  .reason-card:hover { transform:scale(1.1); }
+  .reason-card.opened {
+    background:rgba(255,255,255,0.15); font-size:0.72rem;
+    padding:5px; text-align:center; transform:none;
+  }
+
+  .confetti {
+    position:fixed; width:10px; height:10px; top:-10px;
+    animation:confettiFall linear forwards; z-index:999; pointer-events:none;
+  }
+  @keyframes confettiFall {
+    to { transform:translateY(105vh) rotate(720deg); opacity:0; }
+  }
+
+  .final-text { font-size:1.5rem; line-height:2; max-width:600px; }
+  .emoji-big {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    margin: 20px auto;
+    animation: pulse 1.5s infinite;
+    display: block;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.15);} }
+
+  .gift-icon {
+    position: relative; cursor: pointer; margin: 30px auto;
+    display: inline-block;
+    animation: giftBounce 2s ease-in-out infinite;
+    transition: transform 0.3s;
+  }
+  .gift-icon:hover { transform: scale(1.15); }
+  .gift-icon:active { transform: scale(0.95); }
+  .gift-box {
+    font-size: 7rem; position: relative; z-index: 2;
+    filter: drop-shadow(0 0 20px #b88dff);
+  }
+  .gift-glow {
+    position: absolute; inset: -30px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,141,255,0.6) 0%, transparent 70%);
+    animation: glowPulse 2s ease-in-out infinite; z-index: 1;
+  }
+  @keyframes giftBounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-15px); }
+  }
+  @keyframes glowPulse {
+    0%, 100% { transform: scale(1);   opacity: 0.6; }
+    50%      { transform: scale(1.3); opacity: 1;   }
+  }
+  .gift-hint {
+    color: #b88dff; font-size: 1rem; margin-top: 10px;
+    animation: hintBlink 1.5s ease-in-out infinite;
+  }
+  @keyframes hintBlink {
+    0%, 100% { opacity: 0.5; }
+    50%      { opacity: 1;   }
+  }
+
+  /* СТИХ */
+  .poem-screen { padding: 30px 20px; }
+  .poem-img {
+    width: 140px; height: 140px;
+    object-fit: contain;
+    margin: 10px auto;
+    display: block;
+    animation: pulse 2.5s infinite;
+  }
+  .poem-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    line-height: 1.9;
+    max-width: 520px;
+    margin: 25px auto;
+    text-align: center;
+    color: #f0e8ff;
+    text-shadow: 0 0 15px rgba(184,141,255,0.5);
+    font-style: italic;
+  }
+  .poem-text p {
+    margin-bottom: 18px;
+    max-width: 100%;
+    font-size: inherit;
+  }
+  @media (max-width: 500px) {
+    .poem-img { width: 90px; height: 90px; }
+    .poem-text { font-size: 1.1rem; line-height: 1.75; }
+  }
+
+  /* ВОПРОС ДА/НЕТ */
+  .yes-no-box {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+    position: relative;
+    min-height: 60px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  #yesBtn {
+    background: linear-gradient(135deg, #b88dff, #4b0082);
+    font-size: 1.3rem;
+    padding: 15px 50px;
+  }
+  #noBtn {
+    background: linear-gradient(135deg, #555, #222);
+    box-shadow: 0 0 15px rgba(120,120,120,0.5);
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    transition: all 0.3s ease;
+  }
+</style>
+</head>
+<body>
+
+<div class="compliment-columns" id="complimentColumns"></div>
+
+<button class="back-btn" id="backBtn" onclick="goBack()">← Назад</button>
+
+<!-- ЭКРАН 1: ОТКРЫТКА -->
+<div class="screen active" id="screen1">
+  <img src="cake.png" class="emoji-big" alt="торт">
+  <h1>С Днём Рождения, Катюсик!</h1>
+  <p>Я приготовил для тебя небольшое приключение.<br>Пройди все этапы и найди свой подарок 💝</p>
+  <button onclick="nextScreen(2)">Начать ✨</button>
+</div>
+
+<!-- ЭКРАН 2: СВЕЧА -->
+<div class="screen" id="screen2">
+  <h2>Задуй свечу и загадай желание</h2>
+  <img src="cake-on.png" id="cakeImg" alt="торт-свеча">
+  <div class="flame" id="flame">🔥</div>
+  <p>Нажми на огонёк, чтобы задуть 🕯️</p>
+  <div id="candleNext" style="display:none;">
+    <p class="correct">Желание обязательно сбудется! ✨</p>
+    <button onclick="nextScreen(3)">Дальше →</button>
+  </div>
+</div>
+
+<!-- ЭКРАН 3: КВЕСТ -->
+<div class="screen" id="screen3">
+  <h2>Загадка 1 из 4</h2>
+  <div class="riddle-box">
+    <p id="riddleText">Загружаю...</p>
+    <input type="text" id="riddleInput" placeholder="Твой ответ...">
+    <div><button onclick="checkRiddle()">Проверить</button></div>
+    <div id="riddleResult"></div>
+  </div>
+</div>
+
+<!-- ЭКРАН 4: НАЙДИ СЕРДЕЧКО -->
+<div class="screen" id="screen4">
+  <h2>Найди спрятанное сердечко 💗</h2>
+  <p>Оно где-то среди этих квадратов</p>
+  <div class="heart-grid" id="heartGrid"></div>
+</div>
+
+<!-- ЭКРАН 5: ВОПРОС ДА/НЕТ -->
+<div class="screen" id="screen5">
+  <img src="popsss.png" class="emoji-big" alt="попс">
+  <h2 id="questionText">Ты попс?</h2>
+  <div class="yes-no-box">
+    <button id="yesBtn" onclick="answerYes()">Да 💜</button>
+    <button id="noBtn" onmouseover="runAway(event)" onclick="runAway(event)" ontouchstart="runAway(event)">Нет</button>
+  </div>
+  <p id="questionHint" style="margin-top:20px; opacity:0.7; font-size:1rem;">
+    (подсказка: правильный ответ только один 😏)
+  </p>
+</div>
+
+<!-- ЭКРАН 6: ПАЗЛ -->
+<div class="screen" id="screen6">
+  <h2>Собери наше фото 🧩</h2>
+  <p>Меняй плитки местами, кликая по двум</p>
+  <div class="puzzle" id="puzzle"></div>
+</div>
+
+<!-- ЭКРАН 7: ПАРОЛЬ -->
+<div class="screen" id="screen7">
+  <h2>Финальный пароль 🔒</h2>
+  <p>Введи дату нашего знакомства (в формате ДД.ММ.ГГГГ)</p>
+  <input type="text" id="passwordInput" placeholder="ДД.ММ.ГГГГ">
+  <div><button onclick="checkPassword()">Открыть</button></div>
+  <div id="passwordResult"></div>
+</div>
+
+<!-- ЭКРАН 8: ПЕСНЯ -->
+<div class="screen" id="screen8">
+  <h2>Эта песня - для тебя 🎵</h2>
+  <p>Она всегда напоминает мне о тебе</p>
+  <div class="player">
+    <div class="album-cover"></div>
+    <h3 id="songTitle">Здесь только я</h3>
+    <p id="songArtist">Гости Гаррисона</p>
+    <button id="playBtn" onclick="togglePlay()">▶ Играть</button>
+    <div class="progress-bar" onclick="seekAudio(event)">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="time">
+      <span id="currentTime">0:00</span>
+      <span id="duration">0:00</span>
+    </div>
+    <audio id="audio" src="song.mp3"></audio>
+  </div>
+  <button onclick="nextScreen(9)">Дальше →</button>
+</div>
+
+<!-- ЭКРАН 9: 100 ПРИЧИН -->
+<div class="screen" id="screen9">
+  <h2>100 причин, почему я тебя люблю</h2>
+  <p>Открывай карточки - каждая хранит причину 💕</p>
+  <div class="reasons-grid" id="reasonsGrid"></div>
+  <button onclick="nextScreen(10)">Я открыла все →</button>
+</div>
+
+<!-- ЭКРАН 10: СТИХ -->
+<div class="screen poem-screen" id="screen10">
+  <img src="poem-top.png" class="poem-img" alt="верх">
+  <div class="poem-text">
+    <p>Я променял бы годы жизни<br>
+    Лишь на мгновение с тобой<br>
+    Когда тебя увидел мельком<br>
+    Сразу я знал, встреча с судьбой</p>
+
+    <p>И я тебя люблю бизюмно<br>
+    Души не чаю я в тебе<br>
+    Прекрасней девушки на свете<br>
+    Я не встречал даже во сне</p>
+
+    <p>Так с Днём Рождения, Катямбо,<br>
+    Желаю лучшего всего<br>
+    Чтоб сбылись все твои мечты<br>
+    Моя сбылась и это ты</p>
+  </div>
+  <img src="poem-bottom.png" class="poem-img" alt="низ">
+  <button onclick="nextScreen(11)">Дальше →</button>
+</div>
+
+<!-- ЭКРАН 11: ФИНАЛ -->
+<div class="screen" id="screen11">
+  <img src="love.png" class="emoji-big" alt="лове">
+  <h2>Ты прошла весь путь!</h2>
+  <p class="final-text">
+    Спасибо, что ты есть в моей жизни.<br>
+    Ты - моё самое большое чудо.<br><br>
+    Я далеко, но хочу обнять тебя хотя бы так...
+  </p>
+
+  <div class="gift-icon" onclick="openGift()" id="giftIcon">
+    <div class="gift-box">🎁</div>
+    <div class="gift-glow"></div>
+    <p class="gift-hint">Нажми на подарок 💙</p>
+  </div>
+
+  <p class="final-text" style="margin-top:30px;">
+    Люблю тебя бизюмно ❤️
+  </p>
+  <button onclick="celebrate()">Обнять меня 🤗</button>
+</div>
+
+<script>
+/* ========== ИСТОРИЯ ЭКРАНОВ (для кнопки Назад) ========== */
+let screenHistory = [1];
+
+function nextScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen' + n).classList.add('active');
+  window.scrollTo(0,0);
+
+  if (screenHistory[screenHistory.length - 1] !== n) {
+    screenHistory.push(n);
+  }
+
+  updateBackButton();
+
+  if (n === 4) initHeartGame();
+  if (n === 6) initPuzzle();
+  if (n === 9) initReasons();
+}
+
+function goBack() {
+  if (screenHistory.length <= 1) return;
+
+  screenHistory.pop();
+  const prev = screenHistory[screenHistory.length - 1];
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen' + prev).classList.add('active');
+  window.scrollTo(0,0);
+
+  if (prev === 4) initHeartGame();
+  if (prev === 6) initPuzzle();
+  if (prev === 9) initReasons();
+
+  updateBackButton();
+}
+
+function updateBackButton() {
+  const btn = document.getElementById('backBtn');
+  const current = screenHistory[screenHistory.length - 1];
+  if (current === 1 || screenHistory.length <= 1) {
+    btn.classList.remove('visible');
+  } else {
+    btn.classList.add('visible');
+  }
+}
+
+/* ========== ФОН: ПАДАЮЩИЕ СЕРДЕЧКИ ========== */
+setInterval(() => {
+  const h = document.createElement('div');
+  h.className = 'heart-bg';
+  h.textContent = ['❤️','💕','💖','💗','💜'][Math.floor(Math.random()*5)];
+  h.style.left = Math.random()*100 + 'vw';
+  h.style.fontSize = (1 + Math.random()*1.5) + 'rem';
+  const dur = 5 + Math.random()*5;
+  h.style.animationDuration = dur + 's';
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), dur * 1000);
+}, 400);
+
+/* ========== КОНФЕТТИ ========== */
+function celebrate() {
+  const colors = ['#b88dff','#4b0082','#ffd700','#fff','#ff69b4','#9d4edd'];
+  for (let i = 0; i < 100; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = Math.random()*100 + 'vw';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDuration = (2 + Math.random()*2) + 's';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 4000);
+    }, i * 20);
+  }
+}
+
+/* ========== СВЕЧА ========== */
+document.getElementById('flame').addEventListener('click', function() {
+  this.classList.add('out');
+  this.textContent = '💨';
+  celebrate();
+  document.getElementById('cakeImg').src = 'cake-off.png';
+  document.getElementById('candleNext').style.display = 'block';
+});
+
+/* ========== КВЕСТ: ЗАГАДКИ ========== */
+const riddles = [
+  {
+    q: "Место, где мы впервые встретились. Оно было ужасным по своей сути, но твоё присутсвие там, имело для меня смысл",
+    a: ["уник", "университет", "кубгу", "кубик"],
+    hint: "Чуть не отчислили 😂"
+  },
+  {
+    q: "Здесь мы гуляли до ночи и считали звёзды, хоть и один раз 😂. Что это за место?",
+    a: ["парк", "галицкий", "галецкий"],
+    hint: "Там много деревьев и фонарей 🌳"
+  },
+  {
+    q: "Наше любимое место для свиданий. Там темно и мы смотрим фильм.",
+    a: ["спальня", "кровать", "комната"],
+    hint: "И не только 😏👄🔞"
+  },
+  {
+    q: "Как ты меня ласково называешь?",
+    a: ["зайчик", "зайка", "заюшка", "зая"],
+    hint: "Не попс, не писюндра, не какулито, не козий шарик, не Данилка попадзона, не пердушка и еще многое другое...👿😂"
+  }
+];
+let currentRiddle = 0;
+
+function normalize(str) {
+  return str.toLowerCase().trim().replace(/ё/g, 'е');
+}
+
+function loadRiddle() {
+  if (currentRiddle < riddles.length) {
+    document.getElementById('riddleText').textContent = riddles[currentRiddle].q;
+    document.getElementById('riddleInput').value = '';
+    document.getElementById('riddleResult').innerHTML = '';
+  }
+}
+
+function checkRiddle() {
+  const input = normalize(document.getElementById('riddleInput').value);
+  const answers = riddles[currentRiddle].a.map(normalize);
+  const res = document.getElementById('riddleResult');
+  const correct = answers.some(a => input.includes(a));
+  if (correct) {
+    res.innerHTML = '<p class="correct">Верно! ❤️</p>';
+    celebrate();
+    setTimeout(() => {
+      currentRiddle++;
+      if (currentRiddle < riddles.length) {
+        document.querySelector('#screen3 h2').textContent = `Загадка ${currentRiddle+1} из ${riddles.length}`;
+        loadRiddle();
+      } else {
+        nextScreen(4);
+      }
+    }, 1200);
+  } else {
+    res.innerHTML = `<p class="wrong">Не совсем... Подсказка: ${riddles[currentRiddle].hint}</p>`;
+  }
+}
+loadRiddle();
+
+/* ========== ВОПРОС ДА/НЕТ ========== */
+let noAttempts = 0;
+const noTexts = [
+  'Нет',
+  'Точно нет?',
+  'Подумай ещё',
+  'Уверена?',
+  'Последний шанс',
+  'Не поймаешь',
+  'Мимо!',
+  'Я быстрее',
+  'Даже не пытайся',
+  'Кнопка сломалась',
+  'Не сегодня',
+  'Ай-ай-ай'
+];
+
+function runAway(e) {
+  if (e) e.preventDefault();
+  const btn = document.getElementById('noBtn');
+  const screen = document.getElementById('screen5');
+  const screenRect = screen.getBoundingClientRect();
+  const btnRect = btn.getBoundingClientRect();
+
+  const padding = 80;
+  const maxX = screenRect.width - btnRect.width - padding;
+  const maxY = screenRect.height - btnRect.height - padding;
+
+  const newX = padding + Math.random() * (maxX - padding);
+  const newY = padding + Math.random() * (maxY - padding);
+
+  btn.style.position = 'fixed';
+  btn.style.left = newX + 'px';
+  btn.style.top = newY + 'px';
+  btn.style.transition = 'all 0.3s cubic-bezier(.68,-0.55,.27,1.55)';
+
+  noAttempts++;
+  const idx = Math.min(noAttempts, noTexts.length - 1);
+  btn.textContent = noTexts[idx];
+
+  const scale = Math.max(0.5, 1 - noAttempts * 0.05);
+  btn.style.transform = `scale(${scale})`;
+}
+
+function answerYes() {
+  celebrate();
+  const screen = document.getElementById('screen5');
+  screen.innerHTML = `
+    <div class="emoji-big" style="font-size:5rem; display:flex; align-items:center; justify-content:center;">💜</div>
+    <h2>Я знал это! 😍</h2>
+    <p>Ты — мой самый любимый попс</p>
+  `;
+  setTimeout(() => nextScreen(6), 1800);
+}
+
+/* ========== НАЙДИ СЕРДЕЧКО ========== */
+function initHeartGame() {
+  const grid = document.getElementById('heartGrid');
+  grid.innerHTML = '';
+  const heartPos = Math.floor(Math.random() * 25);
+  for (let i = 0; i < 25; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.textContent = '🌸';
+    cell.onclick = () => {
+      if (i === heartPos) {
+        cell.textContent = '💖';
+        celebrate();
+        setTimeout(() => nextScreen(5), 1000);
+      } else {
+        cell.textContent = '·';
+      }
+    };
+    grid.appendChild(cell);
+  }
+}
+
+/* ========== ПАЗЛ С ФОТО ========== */
+let puzzleOrder = [];
+let selectedTile = null;
+const SOLVED = [0,1,2,3,4,5,6,7,8];
+const TILE = window.innerWidth < 500 ? 80 : 100;
+
+function initPuzzle() {
+  puzzleOrder = [...SOLVED];
+  do {
+    puzzleOrder.sort(() => Math.random() - 0.5);
+  } while (isSolved());
+  selectedTile = null;
+  renderPuzzle();
+}
+
+function isSolved() {
+  return puzzleOrder.every((v, i) => v === SOLVED[i]);
+}
+
+function renderPuzzle() {
+  const p = document.getElementById('puzzle');
+  p.style.gridTemplateColumns = `repeat(3, ${TILE}px)`;
+  p.innerHTML = '';
+  puzzleOrder.forEach((tileIndex, position) => {
+    const t = document.createElement('div');
+    t.className = 'tile' + (selectedTile === position ? ' selected' : '');
+    t.style.width = TILE + 'px';
+    t.style.height = TILE + 'px';
+    t.style.backgroundSize = (TILE * 3) + 'px ' + (TILE * 3) + 'px';
+    const col = tileIndex % 3;
+    const row = Math.floor(tileIndex / 3);
+    t.style.backgroundPosition = `-${col * TILE}px -${row * TILE}px`;
+    t.onclick = () => clickTile(position);
+    p.appendChild(t);
+  });
+}
+
+function clickTile(position) {
+  if (selectedTile === null) {
+    selectedTile = position;
+    renderPuzzle();
+  } else if (selectedTile === position) {
+    selectedTile = null;
+    renderPuzzle();
+  } else {
+    [puzzleOrder[selectedTile], puzzleOrder[position]] =
+    [puzzleOrder[position], puzzleOrder[selectedTile]];
+    selectedTile = null;
+    renderPuzzle();
+    if (isSolved()) {
+      celebrate();
+      setTimeout(() => nextScreen(7), 1200);
+    }
+  }
+}
+
+/* ========== ПАРОЛЬ ========== */
+function checkPassword() {
+  const val = document.getElementById('passwordInput').value.trim();
+  const correct = "25.12.2022";
+  const res = document.getElementById('passwordResult');
+  if (val === correct) {
+    res.innerHTML = '<p class="correct">Пароль верный! 🔓</p>';
+    celebrate();
+    setTimeout(() => nextScreen(8), 1200);
+  } else {
+    res.innerHTML = '<p class="wrong">Ты чего вообще, Попс?</p>';
+  }
+}
+
+/* ========== ПЛЕЕР ========== */
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('playBtn');
+const progressFill = document.getElementById('progressFill');
+const currentTimeEl = document.getElementById('currentTime');
+const durationEl = document.getElementById('duration');
+
+function togglePlay() {
+  if (audio.paused) {
+    audio.play();
+    playBtn.textContent = '⏸ Пауза';
+  } else {
+    audio.pause();
+    playBtn.textContent = '▶ Играть';
+  }
+}
+
+function formatTime(s) {
+  if (isNaN(s)) return '0:00';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60).toString().padStart(2, '0');
+  return `${m}:${sec}`;
+}
+
+audio.addEventListener('loadedmetadata', () => {
+  durationEl.textContent = formatTime(audio.duration);
+});
+audio.addEventListener('timeupdate', () => {
+  const pct = (audio.currentTime / audio.duration) * 100;
+  progressFill.style.width = pct + '%';
+  currentTimeEl.textContent = formatTime(audio.currentTime);
+});
+audio.addEventListener('ended', () => {
+  playBtn.textContent = '▶ Играть';
+});
+
+function seekAudio(e) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = pct * audio.duration;
+}
+
+/* ========== 100 ПРИЧИН ========== */
+const reasons = [
+  "Твоя улыбка, от которой тает любая грусть",
+  "Твой смех - самый родной звук на свете",
+  "Твои глаза, в которых я тону каждый раз",
+  "Твоя забота, которую я чувствую даже на расстоянии",
+  "Как ты меня понимаешь без слов",
+  "Твоя доброта, которой ты согреваешь",
+  "Твои объятия - моё самое любимое место",
+  "Как ты готовишь - даже простое блюдо становится шедевром",
+  "Твоя поддержка в самые трудные моменты",
+  "Твоя искренность",
+  "Твоя нежность, от которой замирает сердце",
+  "Как ты морщишь носик, когда злишься",
+  "Твои губки",
+  "Твоё умение слушать по-настоящему",
+  "Твоя мудрость не по годам",
+  "Как ты заботишься о близких",
+  "Твоя сексуальность",
+  "Твоя утонченность",
+  "Твоя сила духа, которой я восхищаюсь",
+  "Как ты умеешь рассмешить меня даже в самый хмурый день",
+  "Твоя честность, даже когда это непросто",
+  "Твоя забота о мелочах, которые важны",
+  "Как ты радуешься простым вещам",
+  "Твой голос - моя любимая мелодия",
+  "Твоя способность прощать",
+  "Твоё терпение ко мне, когда я бываю невыносим",
+  "Твоя вера в меня, когда я сам в себя не верю",
+  "Как ты умеешь создать уют из ничего",
+  "Твоя улыбка по утрам, даже сонная",
+  "Твоя преданность тем, кого ты любишь",
+  "Твой вкус в еде - всегда попадаешь в точку",
+  "Как ты заботишься обо мне, когда я болею",
+  "Твоя любовь к животным",
+  "Твоя щедрость - душевная и материальная",
+  "Как ты умеешь вдохновлять меня на большее",
+  "Твоя красота - и внешняя, и внутренняя",
+  "Твоё чувство юмора, которое совпадает с моим",
+  "Твоя способность находить красоту в мелочах",
+  "Твоя попи",
+  "Твоя любовь новым местам",
+  "Твои сисюли",
+  "Как ты умеешь успокоить меня одним словом",
+  "Твоя целеустремлённость",
+  "Твоя мягкость и одновременно твёрдость",
+  "Как ты смотришь на меня",
+  "Твоя способность прощать мои ошибки",
+  "Твои нежные косания",
+  "Твоя любовь к книгам",
+  "Как ты умеешь мечтать по-настоящему",
+  "Твоя забота о нашей будущей семье",
+  "Твоя интуиция, которая никогда не подводит",
+  "Как ты умеешь настоять на своём, когда это важно",
+  "Твоя искренняя радость от моих успехов",
+  "Твоя способность видеть во мне лучшее",
+  "Твоя любовь к порядку и уюту",
+  "Как ты умеешь слушать мои длинные истории",
+  "Хихик",
+  "Твои щечки",
+  "Как ты умеешь быть сильной, когда это нужно",
+  "Твоя женственность",
+  "Твоя способность признавать ошибки",
+  "Твоё умение радоваться",
+  "Твой любящий вгляд",
+  "Как ты умеешь меня вдохновлять",
+  "Твоя честность в отношениях",
+  "Твоя способность любить всем сердцем",
+  "Как ты умеешь хранить секреты",
+  "Твоя щедрость на комплименты",
+  "Твоя забота о моём настроении",
+  "Как ты умеешь создавать традиции",
+  "Твоя любовь к праздникам",
+  "Твоё умение готовить вкусности",
+  "Твоя способность быть рядом в нужный момент",
+  "Как ты умеешь удивлять",
+  "Твоя любовь к творчеству",
+  "Твоё умение ценить моменты",
+  "Твоя забота о моих вещах",
+  "Как ты умеешь быть терпеливой",
+  "Твоя способность быть крутой Катюнькой",
+  "Твоя любовь к природе",
+  "Как ты умеешь расслабляться и отдыхать, со мной, конечно",
+  "Твоя забота о нашем будущем",
+  "Твоя романтика",
+  "Как ты умеешь быть смешной",
+  "Твоя любовь к сюрпризам",
+  "Твоё умение быть внимательной",
+  "Твоя способность хранить верность",
+  "Как ты умеешь быть романтичной",
+  "Твоя любовь к нам - нашей истории",
+  "Твоя способность быть лучшим другом",
+  "Как ты умеешь быть нежной",
+  "Твоя забота о моём самочувствии",
+  "Твоё умение прощать мои недостатки",
+  "Твоя способность любить безусловно",
+  "Как ты умеешь быть моим вдохновением",
+  "Твоя любовь к жизни",
+  "Твоя способность быть моей опорой",
+  "Как ты умеешь быть моим домом",
+  "Твоя способность быть моим всем ❤️"
+];
+
+function initReasons() {
+  const grid = document.getElementById('reasonsGrid');
+  grid.innerHTML = '';
+  const list = reasons.length >= 100 ? reasons.slice(0,100) :
+    [...reasons, ...Array(100 - reasons.length).fill('Люблю тебя ❤️')];
+  list.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'reason-card';
+    card.textContent = i + 1;
+    card.onclick = () => {
+      if (!card.classList.contains('opened')) {
+        card.classList.add('opened');
+        card.textContent = r;
+      }
+    };
+    grid.appendChild(card);
+  });
+}
+
+/* ========== ПОДАРОК ========== */
+function openGift() {
+  celebrate();
+  const gift = document.getElementById('giftIcon');
+  gift.innerHTML = `
+    <div class="gift-box">💙</div>
+    <div class="gift-glow"></div>
+    <p class="gift-hint">Подарок уже у тебя на карте 💙</p>
+  `;
+}
+
+/* ========== БЕГУЩИЕ КОЛОНКИ ========== */
+const compliments = [
+'Красивая', 'Обворожительная', 'Прекрасная', 'Неумолимая',
+'Умопомрачительная', 'Идеальная', 'Самая самая', 'Нежная',
+'Любимая', 'Родная', 'Единственная', 'Восхитительная',
+'Сказочная', 'Бесподобная', 'Очаровательная', 'Милая',
+'Солнечная', 'Ласковая', 'Заботливая', 'Искренняя',
+'Великолепная', 'Божественная', 'Ослепительная', 'Утончённая',
+'Мудрая', 'Смелая', 'Добрая', 'Верная', 'Безупречная',
+'Желанная', 'Неповторимая', 'Удивительная', 'Чудесная',
+'Грациозная', 'Элегантная', 'Жизнерадостная', 'Тёплая',
+'Изумительная', 'Роскошная', 'Бесконечная', 'Моя',
+'Лучезарная', 'Пленительная', 'Притягательная', 'Вдохновляющая',
+'Чарующая', 'Неотразимая', 'Завораживающая', 'Душевная',
+'Сердечная', 'Трепетная', 'Сияющая', 'Неподражаемая',
+'Бесценная', 'Долгожданная', 'Необыкновенная', 'Гармоничная',
+'Магнетическая', 'Любименькая', 'Нежнейшая',
+'Тёпленькая', 'Мягкая', 'Уютная', 'Светлая',
+'Ясная', 'Чистая', 'Ангельская', 'Святая',
+'Хранительница','Радость моя',
+'Счастье моё', 'Сокровище', 'Драгоценная', 'Золотая',
+'Алмазная', 'Жемчужная', 'Хрустальная', 'Сногсшибательная',
+'Королевская', 'Царственная', 'Амозёнка',
+'Богиня', 'Муза', 'Венера', 'Афродита',
+'Клеопатра', 'Статная', 'Стройная', 'Изящная',
+'Аккуратная', 'Миниатюрная', 'Честная', 'Справедливая',
+'Отзывчивая', 'Самоотверженная', 'Бескорыстная', 'Терпеливая',
+'Понимающая', 'Прощающая', 'Поддерживающая', 'Мотивирующая',
+'Целеустремлённая', 'Настойчивая', 'Сильная', 'Стойкая',
+'Несгибаемая', 'Харизматичная', 'Обаятельная', 'Остроумная',
+'Эрудированная', 'Начитанная', 'Творческая', 'Креативная',
+'Артистичная', 'Музыкальная', 'Моя половинка',
+'Вторая половинка', 'Судьба моя','Ангел-хранитель',
+'Путеводная звезда', 'Мой свет', 'Моё солнце', 'Моя луна',
+'Моя вселенная', 'Моё всё','Моё вдохновение',
+'Моя мечта', 'Моё чудо', 'Подарок судьбы', 'Котёнок',
+'Зайка', 'Солнышко', 'Звёздочка', 'Сладкая','Булочка',
+'Небесная','Благословенная', 'Дарованная свыше', 'Ниспосланная', 'Судьбоносная',
+'Роковая','Непостижимая', 'Многогранная', 'Глубокая','Моё дыхание',
+'Моё сердце', 'Моя душа', 'Моя радость',
+'Мой покой', 'Мой дом', 'Моя опора', 'Моя сила',
+'Моя слабость', 'Моё лучшее', 'Ты моя жизнь'
+];
+
+function initComplimentColumns() {
+  const container = document.getElementById('complimentColumns');
+  container.innerHTML = '';
+
+  const fontList = [
+    "'Caveat', cursive",
+    "'Comfortaa', cursive",
+    "'Cormorant Garamond', serif",
+    "'Marck Script', cursive",
+    "'Playfair Display', serif",
+    "'Poppins', sans-serif",
+    "'Great Vibes', cursive",
+    "'Amatic SC', cursive",
+    "'Lobster', cursive",
+    "'Pacifico', cursive"
+  ];
+
+  const style = getComputedStyle(document.documentElement);
+  const speedMin = parseFloat(style.getPropertyValue('--col-speed-min')) || 10;
+  const speedMax = parseFloat(style.getPropertyValue('--col-speed-max')) || 18;
+
+  let colCount;
+  if (window.innerWidth < 500) colCount = 2;
+  else if (window.innerWidth < 900) colCount = 3;
+  else colCount = 5;
+
+  const colWidth = 100 / colCount;
+
+  for (let i = 0; i < colCount; i++) {
+    const col = document.createElement('div');
+    col.className = 'compliment-col';
+    col.style.left = (i * colWidth) + '%';
+    col.style.width = colWidth + '%';
+    col.style.alignItems = 'center';
+
+    const duration = speedMin + Math.random() * (speedMax - speedMin);
+    col.style.animationDuration = duration + 's';
+    col.style.animationDelay = (-Math.random() * duration) + 's';
+
+    const shuffled = [...compliments].sort(() => Math.random() - 0.5);
+    const words = [];
+    for (let k = 0; k < 5; k++) words.push(...shuffled);
+
+    words.forEach(word => {
+      const span = document.createElement('span');
+      span.textContent = word;
+
+      const randomFont = fontList[Math.floor(Math.random() * fontList.length)];
+      span.style.fontFamily = randomFont;
+
+      const sizeVariation = 0.85 + Math.random() * 0.1;
+      span.style.fontSize = `calc(var(--col-font) * ${sizeVariation})`;
+
+      col.appendChild(span);
+    });
+
+    container.appendChild(col);
+  }
+}
+
+initComplimentColumns();
+
+window.addEventListener('resize', () => {
+  clearTimeout(window._colResize);
+  window._colResize = setTimeout(initComplimentColumns, 300);
+});
+
+updateBackButton();
+</script>
+</body>
+</html>
