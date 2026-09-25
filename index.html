@@ -26,8 +26,13 @@
     background: linear-gradient(135deg, #0a0014, #1e3a8a, #6b21a8, #0a0014);
     background-size: 400% 400%;
     animation: gradientShift 20s ease infinite;
-    color:#fff; overflow-x:hidden; min-height:100dvh;
+    color: #fff;
     overflow: hidden;
+    height: 100dvh;              /* ← фиксируем высоту */
+    display: flex;               /* ← включаем flex */
+    align-items: center;         /* ← центр по вертикали */
+    justify-content: center;     /* ← центр по горизонтали */
+    overscroll-behavior: none;   /* ← убирает "оттягивание" на телефоне */
   }
   @keyframes gradientShift {
     0% { background-position: 0% 50%; }
@@ -35,24 +40,25 @@
     100% { background-position: 0% 50%; }
   }
   .screen {
-    display:none;
-    height: 100dvh;              /* ← было min-height */
-    max-height: 100vh;
+    display: none;
+    width: 100%;                 /* ← растягиваем на всю ширину */
+    height: 100dvh;              /* ← на всю высоту */
     padding: 40px 20px;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-    z-index:1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;     /* ← контент внутри экрана по центру */
+    text-align: center;
+    position: relative;
+    z-index: 1;
     overflow: hidden; 
   }
 
   .screen.scrollable {
-  overflow-y: auto;           /* ← разрешаем скролл только этому экрану */
-  justify-content: flex-start; /* ← контент сверху, а не по центру */
-  padding-top: 60px;
-  padding-bottom: 60px;
+   overflow-y: auto;
+    justify-content: flex-start;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    height: 100dvh;
   }
   
   .screen.active { display:flex; animation: fadeIn 0.8s ease; }
@@ -382,7 +388,6 @@
   /* Отступы экрана */
   .screen {
     padding: 15px 12px;
-    min-height: 100vh;
     justify-content: center;
   }
     
