@@ -11,8 +11,8 @@
 <style>
   :root {
     --col-opacity: 0.75;
-    --col-speed-min: 260;
-    --col-speed-max: 320;
+    --col-speed-min: 280;
+    --col-speed-max: 340;
     --col-gap: 9;
     --col-font: 1.7rem;
     --col-font-mobile: 1.25rem;
@@ -1053,8 +1053,8 @@ function initComplimentColumns() {
 
       const randomFont = fontList[Math.floor(Math.random() * fontList.length)];
       span.style.fontFamily = randomFont;
-
-      const sizeVariation = 0.85 + Math.random() * 0.1;
+//+ Math.random() * 0.1
+      const sizeVariation = 0.85;
       span.style.fontSize = `calc(var(--col-font) * ${sizeVariation})`;
 
       col.appendChild(span);
