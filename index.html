@@ -27,6 +27,7 @@
     background-size: 400% 400%;
     animation: gradientShift 20s ease infinite;
     color:#fff; overflow-x:hidden; min-height:100vh;
+    overflow: hidden;
   }
   @keyframes gradientShift {
     0% { background-position: 0% 50%; }
@@ -34,10 +35,26 @@
     100% { background-position: 0% 50%; }
   }
   .screen {
-    display:none; min-height:100vh; padding:40px 20px;
-    flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; position:relative; z-index:1;
+    display:none;
+    height: 100vh;              /* ← было min-height */
+    max-height: 100vh;
+    padding: 40px 20px;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    z-index:1;
+    overflow: hidden; 
   }
+
+  .screen.scrollable {
+  overflow-y: auto;           /* ← разрешаем скролл только этому экрану */
+  justify-content: flex-start; /* ← контент сверху, а не по центру */
+  padding-top: 60px;
+  padding-bottom: 60px;
+  }
+  
   .screen.active { display:flex; animation: fadeIn 0.8s ease; }
   @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 
@@ -368,19 +385,6 @@
     padding: 15px 12px;
     min-height: 100vh;
     justify-content: center;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-    overflow: hidden;  
-  }
-
-  .screen.scrollable {
-  overflow-y: auto;           /* ← разрешаем скролл только этому экрану */
-  justify-content: flex-start; /* ← контент сверху, а не по центру */
-  padding-top: 60px;
-  padding-bottom: 60px;
   }
     
   /* Заголовки */
