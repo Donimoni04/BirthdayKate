@@ -42,7 +42,7 @@
   @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 
   h1 { font-size:2.5rem; margin-bottom:20px; text-shadow:0 0 20px #b88dff; }
-  h2 { font-size:1.8rem; margin-bottom:20px; }
+  h2 { font-size:1.6rem; margin-bottom:20px; }
   p { font-size:1.2rem; line-height:1.6; margin-bottom:15px; max-width:600px; }
 
   button {
@@ -133,7 +133,7 @@
   .flame.out { opacity:0.2; filter:grayscale(1); }
 
   .riddle-box {
-    background:rgba(255,255,255,0.1); padding:30px; border-radius:20px;
+    background:rgba(255,255,255,0.1); padding:25px; border-radius:20px;
     border:2px solid rgba(184,141,255,0.5); max-width:500px;
   }
   .wrong { color:#ff6b6b; margin-top:10px; }
@@ -254,6 +254,24 @@
     animation: pulse 1.5s infinite;
     display: block;
   }
+
+  .emoji {
+    width: 260px;
+    height: 260px;
+    object-fit: contain;
+    margin: 20px auto;
+    animation: pulse 1.5s infinite;
+    display: block;
+  }
+
+  .emoji-cake {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    margin: 20px auto;
+    display: block;
+  }
+  
   @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.15);} }
 
   .gift-icon {
@@ -472,7 +490,7 @@
 
 <!-- ЭКРАН 11: ФИНАЛ -->
 <div class="screen" id="screen11">
-  <img src="love.png" class="emoji-big" alt="лове">
+  <img src="love.png" class="emoji" alt="лове">
   <h2>Ты прошла весь путь!</h2>
   <p class="final-text">
     Спасибо, что ты есть в моей жизни.<br>
