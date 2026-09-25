@@ -26,7 +26,7 @@
     background: linear-gradient(135deg, #0a0014, #1e3a8a, #6b21a8, #0a0014);
     background-size: 400% 400%;
     animation: gradientShift 20s ease infinite;
-    color:#fff; overflow-x:hidden; min-height:100vh;
+    color:#fff; overflow-x:hidden; min-height:100dvh;
     overflow: hidden;
   }
   @keyframes gradientShift {
@@ -36,7 +36,7 @@
   }
   .screen {
     display:none;
-    height: 100vh;              /* ← было min-height */
+    height: 100dvh;              /* ← было min-height */
     max-height: 100vh;
     padding: 40px 20px;
     flex-direction:column;
@@ -339,7 +339,6 @@
     font-size: 1.35rem;
     line-height: 1.9;
     max-width: 520px;
-    margin: 25px auto;
     text-align: center;
     color: #f0e8ff;
     text-shadow: 0 0 15px rgba(184,141,255,0.5);
